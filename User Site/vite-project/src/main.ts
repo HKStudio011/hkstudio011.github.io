@@ -1,4 +1,5 @@
 import "./style.css";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import $ from "jquery";
 import type { NeatConfig } from "@firecms/neat";
 import { NeatGradient } from "@firecms/neat";
@@ -71,3 +72,4 @@ export function testViteLibrary() {
 }
 
 export { $ };
+

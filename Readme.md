@@ -39,9 +39,9 @@
      ```
      npm install bootstrap
      ```
-   * **Chart.js:**
+   * **Neat gradients:**
      ```
-     npm install chart.js
+     npm install @firecms/neat three
      ```
    * **JQuery:**
      ```
@@ -62,7 +62,7 @@
 >     "dev": "vite",
 >     "build": "tsc && vite build",
 >     "preview": "vite preview",
->     "watch": "chokidar "../**/*.{razor,ts}" -c "tsc && vite build""
+>     "watch": "chokidar \"../**/*.razor\" \"src/**/*.{ts,js}\" \"src/**/*.css\" -c \"tsc && vite build\""
 >   }
 > }
 > ```
@@ -98,7 +98,9 @@
 2. **[style.css]() (kích hoạt Tailwind):**
    ```
    @config "../tailwind.config.js";
-   @import "tailwindcss";
+   @import 'bootstrap/dist/css/bootstrap.min.css';
+   @import "tailwindcss" prefix(tw);
+   /* dung tw: khi gọi class của tailwind */
    ```
 3. **[main.js]() (import CSS và ví dụ dùng thư viện npm):**
    ```

@@ -1,90 +1,234 @@
 ﻿@inject User_Site.Router.Router router;
+@inject IJSRuntime JS
 @page "/"
 
 <PageTitle>Home</PageTitle>
 
-<div class="relative w-screen h-screen overflow-hidden overflow-y-hidden overflow-x-hidden">
-    <canvas id="gradient" class="absolute inset-0 w-full h-full z-0"></canvas>
-    <div class="absolute inset-0 z-1 w-full h-full flex flex-col">
-        <div class="text-center space-y-6 ">
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight
-                   text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
-                HK Studio
-            </h1>
-            <div class="mx-auto w-64 h-2 bg-slate-700 rounded-full overflow-hidden">
-                <div class="h-full bg-emerald-500 animate-pulse"></div>
+<div class="tw:relative tw:w-screen tw:h-screen tw:overflow-hidden tw:overflow-y-hidden tw:overflow-x-hidden">
+    <canvas id="gradient" class="tw:absolute tw:inset-0 tw:w-full tw:h-full tw:z-0"></canvas>
+    <div class="tw:absolute tw:inset-0 tw:z-1 tw:w-full tw:h-full tw:flex tw:flex-col">
+        <div class="tw:text-center tw:space-y-6 ">
+            <div>
+                <span class="tw:text-4xl tw:md:text-6xl tw:font-extrabold tw:tracking-tight">
+                    <span
+                        class="
+                   tw:text-transparent tw:bg-clip-text tw:bg-gradient-to-r tw:from-pink-500 tw:via-purple-500 tw:to-indigo-500">
+                        HK Studio
+                    </span>
+                    ✨
+                </span>
+
+            </div>
+
+            <div class="tw:mx-auto tw:w-64 tw:h-2 tw:bg-slate-700 tw:rounded-full tw:overflow-hidden">
+                <div class="tw:h-full tw:bg-emerald-500 tw:animate-pulse"></div>
             </div>
         </div>
-        <div class="m-6 relative flex-1">
-            <div class="bg-black rounded-[2vw] opacity-30 absolute inset-0 z-0">
+        <div class="tw:m-6 tw:relative tw:flex-1">
+            <div class="tw:bg-black tw:rounded-[2vw] tw:opacity-30 tw:absolute tw:inset-0 tw:z-0">
             </div>
-            <div class="absolute inset-0 z-1 w-full h-full p-6 flex flex-col">
-                <h1 class="text-3xl font-bold mb-6 text-center">🌐 Danh sách kênh & dự án</h1>
+            <div class="tw:absolute tw:inset-0 tw:z-1 tw:w-full tw:h-full tw:p-6 tw:flex tw:flex-col">
+                <h1 class="tw:text-3xl tw:!text-white tw:!font-bold tw:!mb-6 tw:!text-center" >🌐 Mạng xã hội & dự án</h1>
 
-                <div class="overflow-clip overflow-y-auto overflow-x-hidden flex-1">
+
+                <div class="custom-scroll tw:flex-1 tw:overflow-x-hidden tw:overflow-y-auto">
                     <!-- Nhóm YouTube -->
-                    <div class="mb-8">
-                        <h2 class="text-xl font-semibold text-red-600 mb-4">▶️ YouTube</h2>
-                        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                            <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
-                                <h3 class="font-bold text-lg">Code Dễ Hiểu</h3>
-                                <p class="text-sm text-gray-600">Video hướng dẫn lập trình cơ bản</p>
-                            </li>
-                            <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
-                                <h3 class="font-bold text-lg">Tech Review</h3>
-                                <p class="text-sm text-gray-600">Đánh giá sản phẩm công nghệ</p>
-                            </li>
-                                                        <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
-                                <h3 class="font-bold text-lg">Tech Review</h3>
-                                <p class="text-sm text-gray-600">Đánh giá sản phẩm công nghệ</p>
-                            </li>
-                            
-                        </ul>
-                    </div>
+                    <div class="container my-5">
+                        <!-- Tiêu đề -->
+                        <h2 class="tw:text-2xl tw:!font-bold tw:!text-white tw:!mb-6 d-flex align-items-center">
+                            ▶️ YouTube
+                        </h2>
 
+                        <!-- Grid -->
+                        <div class="row g-4">
+                            <!-- Card 1 -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div
+                                    class="card tw:rounded-xl tw:shadow-md tw:hover:shadow-2xl tw:transition tw:duration-300 tw:bg-white tw:border-0 tw:hover:-translate-y-1">
+                                    <div class="card-body">
+                                        <h3 class="card-title tw:font-bold tw:text-lg tw:mb-2">💻 HK Studio</h3>
+                                        <p class="card-text tw:text-sm tw:text-gray-600">
+                                            Công nghệ, lập trình & sáng tạo
+                                        </p>
+                                        <a href="https://www.youtube.com/@@hkstudio011" target="_blank" rel="noopener noreferrer"
+                                            class="btn btn-sm btn-outline-danger tw:mt-3 tw:hover:bg-red-600 tw:hover:text-white">
+                                            ▶️ Xem ngay
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div
+                                    class="card tw:rounded-xl tw:shadow-md tw:hover:shadow-2xl tw:transition tw:duration-300 tw:bg-white tw:border-0 tw:hover:-translate-y-1">
+                                    <div class="card-body">
+                                        <h3 class="card-title tw:font-bold tw:text-lg tw:mb-2">🎵 [HK] Thanh Âm</h3>
+                                        <p class="card-text tw:text-sm tw:text-gray-600">
+                                            Âm nhạc & thư giãn
+                                        </p>
+                                        <a href="https://www.youtube.com/@@hkthanham" target="_blank" rel="noopener noreferrer"
+                                            class="btn btn-sm btn-outline-danger tw:mt-3 tw:hover:bg-red-600 tw:hover:text-white">
+                                            ▶️ Xem ngay
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div
+                                    class="card tw:rounded-xl tw:shadow-md tw:hover:shadow-2xl tw:transition tw:duration-300 tw:bg-white tw:border-0 tw:hover:-translate-y-1">
+                                    <div class="card-body">
+                                        <h3 class="card-title tw:font-bold tw:text-lg tw:mb-2">🎬 [HK] Thích Làm Phim
+                                        </h3>
+                                        <p class="card-text tw:text-sm tw:text-gray-600">
+                                            Làm phim & sáng tạo nội dung
+                                        </p>
+                                        <a href="https://www.youtube.com/@@hkthichlamphim" target="_blank" rel="noopener noreferrer"
+                                            class="btn btn-sm btn-outline-danger tw:mt-3 tw:hover:bg-red-600 tw:hover:text-white">
+                                            ▶️ Xem ngay
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div
+                                    class="card tw:rounded-xl tw:shadow-md tw:hover:shadow-2xl tw:transition tw:duration-300 tw:bg-white tw:border-0 tw:hover:-translate-y-1">
+                                    <div class="card-body">
+                                        <h3 class="card-title tw:font-bold tw:text-lg tw:mb-2">🎙️ Mì Gói Cuối Tháng
+                                        </h3>
+                                        <p class="card-text tw:text-sm tw:text-gray-600">
+                                            Audio & giải trí
+                                        </p>
+                                        <a href="https://www.youtube.com/@@migoicuoithang011" target="_blank" rel="noopener noreferrer"
+                                            class="btn btn-sm btn-outline-danger tw:mt-3 tw:hover:bg-red-600 tw:hover:text-white">
+                                            ▶️ Xem ngay
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 5 -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div
+                                    class="card tw:rounded-xl tw:shadow-md tw:hover:shadow-2xl tw:transition tw:duration-300 tw:bg-white tw:border-0 tw:hover:-translate-y-1">
+                                    <div class="card-body">
+                                        <h3 class="card-title tw:font-bold tw:text-lg tw:mb-2">🎮 [HK] Gà Gamer</h3>
+                                        <p class="card-text tw:text-sm tw:text-gray-600">
+                                            Game & streaming
+                                        </p>
+                                        <a href="https://www.youtube.com/@@hkgagamer" target="_blank" rel="noopener noreferrer"
+                                            class="btn btn-sm btn-outline-danger tw:mt-3 tw:hover:bg-red-600 tw:hover:text-white">
+                                            ▶️ Xem ngay
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Nhóm TikTok -->
-                    <div class="mb-8">
-                        <h2 class="text-xl font-semibold text-pink-500 mb-4">🎵 TikTok</h2>
-                        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
-                                <h3 class="font-bold text-lg">Dev Tips</h3>
-                                <p class="text-sm text-gray-600">Mẹo lập trình nhanh gọn</p>
-                            </li>
-                            <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
-                                <h3 class="font-bold text-lg">Fun Coding</h3>
-                                <p class="text-sm text-gray-600">Clip ngắn giải trí về code</p>
-                            </li>
-                        </ul>
+                    <div class="container my-5">
+                        <!-- Tiêu đề -->
+                        <h2 class="tw:text-2xl tw:!font-bold tw:!text-white tw:!mb-6 d-flex align-items-center">
+                            🎵 TikTok
+                        </h2>
+
+                        <!-- Grid -->
+                        <div class="row g-4">
+                            <!-- Card 1 -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div
+                                    class="card tw:rounded-xl tw:shadow-md tw:hover:shadow-2xl tw:transition tw:duration-300 tw:bg-white tw:border-0 tw:hover:-translate-y-1">
+                                    <div class="card-body">
+                                        <h3 class="card-title tw:font-bold tw:text-lg tw:mb-2">💻 HK Studio</h3>
+                                        <p class="card-text tw:text-sm tw:text-gray-600">
+                                            Công nghệ, lập trình & sáng tạo
+                                        </p>
+                                        <a href="https://www.tiktok.com/@@hkstudio0101" target="_blank" rel="noopener noreferrer"
+                                            class="btn btn-sm btn-outline-primary tw:mt-3 tw:hover:bg-blue-600 tw:hover:text-white">
+                                            🎵 Xem ngay
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div
+                                    class="card tw:rounded-xl tw:shadow-md tw:hover:shadow-2xl tw:transition tw:duration-300 tw:bg-white tw:border-0 tw:hover:-translate-y-1">
+                                    <div class="card-body">
+                                        <h3 class="card-title tw:font-bold tw:text-lg tw:mb-2">🎙️ Mì Gói Cuối Tháng
+                                        </h3>
+                                        <p class="card-text tw:text-sm tw:text-gray-600">
+                                            Audio & giải trí
+                                        </p>
+                                        <a href="https://www.tiktok.com/@@migoicuoithang" target="_blank" rel="noopener noreferrer"
+                                            class="btn btn-sm btn-outline-primary tw:mt-3 tw:hover:bg-blue-600 tw:hover:text-white">
+                                            🎵 Xem ngay
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div
+                                    class="card tw:rounded-xl tw:shadow-md tw:hover:shadow-2xl tw:transition tw:duration-300 tw:bg-white tw:border-0 tw:hover:-translate-y-1">
+                                    <div class="card-body">
+                                        <h3 class="card-title tw:font-bold tw:text-lg tw:mb-2">🎮 [HK] Gà Gamer</h3>
+                                        <p class="card-text tw:text-sm tw:text-gray-600">
+                                            Game & streaming
+                                        </p>
+                                        <a href="https://www.tiktok.com/@@hkgagamer" target="_blank" rel="noopener noreferrer"
+                                            class="btn btn-sm btn-outline-primary tw:mt-3 tw:hover:bg-blue-600 tw:hover:text-white">
+                                            🎵 Xem ngay
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Nhóm GitHub -->
-                    <div>
-                        <h2 class="text-xl font-semibold text-gray-800 mb-4">💻 GitHub</h2>
-                        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                            <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
-                                <h3 class="font-bold text-lg">awesome-project</h3>
-                                <p class="text-sm text-gray-600">Repo tổng hợp tài nguyên hữu ích</p>
-                                <a href="https://github.com/username/awesome-project"
-                                    class="text-blue-500 text-sm hover:underline">Xem trên GitHub</a>
-                            </li>
-                            <li class="bg-white p-4 rounded shadow hover:shadow-lg transition">
-                                <h3 class="font-bold text-lg">my-portfolio</h3>
-                                <p class="text-sm text-gray-600">Website cá nhân open-source</p>
-                                <a href="https://github.com/username/my-portfolio"
-                                    class="text-blue-500 text-sm hover:underline">Xem trên GitHub</a>
-                            </li>
-                        </ul>
+                    <div class="container my-5">
+                        <!-- Tiêu đề -->
+                        <h2 class="tw:text-2xl tw:!font-bold tw:!text-white tw:!mb-6 d-flex align-items-center">
+                            💻 GitHub
+                        </h2>
+
+                        <!-- Grid -->
+                        <div class="row g-4">
+                            <!-- Card 1 -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div
+                                    class="card tw:rounded-xl tw:shadow-md tw:hover:shadow-2xl tw:transition tw:duration-300 tw:bg-white tw:border-0 tw:hover:-translate-y-1">
+                                    <div class="card-body">
+                                        <h3 class="card-title tw:font-bold tw:text-lg tw:mb-2">
+                                            🐙 hkstudio011.github.io
+                                        </h3>
+                                        <p class="card-text tw:text-sm tw:text-gray-600">
+                                            Repo tích hợp Vite + Tailwind vào Blazor
+                                        </p>
+                                        <a href="https://github.com/HKStudio011/hkstudio011.github.io" target="_blank" rel="noopener noreferrer"
+                                            class="btn btn-sm btn-outline-dark tw:mt-3 tw:flex tw:items-center tw:gap-2 tw:hover:bg-gray-800 tw:hover:text-white">
+                                            <span>🔗</span> <span>Xem trên GitHub</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
 </div>
 
 <script type="module">
+    // case 1
     import { $, testViteLibrary, initNeatGradient } from '/js/assets/main.js';
 
     $(document).ready(function ()
@@ -97,5 +241,4 @@
 
 
 @code {
-
 }

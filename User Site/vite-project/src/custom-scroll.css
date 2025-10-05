@@ -1,0 +1,30 @@
+/* Container có class custom-scroll */
+.custom-scroll {
+  /* ví dụ: tạo vùng cuộn */
+  overflow: auto;
+  padding-right: 12px;
+  box-sizing: content-box; /* để padding không co hẹp nội dung */
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background: linear-gradient(to bottom, #9933ff, #ff66cc);
+}
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom,  #aa55ff, #ff99dd);
+}
+
+/* Firefox */
+@-moz-document url-prefix() {
+  .custom-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #9933ff transparent;
+  }
+}

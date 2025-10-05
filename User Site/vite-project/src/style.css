@@ -1,2 +1,5 @@
 @config "../tailwind.config.js";
-@import "tailwindcss";
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import "tailwindcss" prefix(tw);
+/* dung tw: khi gọi class của tailwind */
+@import "./custom-scroll.css";
