@@ -2,11 +2,6 @@ function kh(i) {
   return i && i.__esModule && Object.prototype.hasOwnProperty.call(i, "default") ? i.default : i;
 }
 var ga = { exports: {} };
-/*!
-  * Bootstrap v5.3.8 (https://getbootstrap.com/)
-  * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-  */
 var Hh = ga.exports, tu;
 function Vh() {
   return tu || (tu = 1, (function(i, e) {
@@ -1996,16 +1991,6 @@ function Vh() {
 }
 Vh();
 var _a = { exports: {} };
-/*!
- * jQuery JavaScript Library v3.7.1
- * https://jquery.com/
- *
- * Copyright OpenJS Foundation and other contributors
- * Released under the MIT license
- * https://jquery.org/license
- *
- * Date: 2023-08-28T13:37Z
- */
 var Gh = _a.exports, nu;
 function Wh() {
   return nu || (nu = 1, (function(i) {
@@ -5615,11 +5600,6 @@ function Wh() {
 }
 var Xh = Wh();
 const l0 = /* @__PURE__ */ kh(Xh);
-/**
- * @license
- * Copyright 2010-2024 Three.js Authors
- * SPDX-License-Identifier: MIT
- */
 const vc = "169", qh = 0, iu = 1, jh = 2, rf = 1, $h = 2, sr = 3, Ir = 0, ei = 1, or = 2, Lr = 0, ks = 1, ru = 2, su = 3, ou = 4, Yh = 5, rs = 100, Kh = 101, Zh = 102, Jh = 103, Qh = 104, ed = 200, td = 201, nd = 202, id = 203, Ll = 204, Dl = 205, rd = 206, sd = 207, od = 208, ad = 209, ld = 210, cd = 211, ud = 212, fd = 213, hd = 214, Il = 0, Nl = 1, Ul = 2, Xs = 3, Ol = 4, Fl = 5, Bl = 6, zl = 7, sf = 0, dd = 1, pd = 2, Dr = 0, md = 1, gd = 2, _d = 3, vd = 4, xd = 5, yd = 6, Sd = 7, of = 300, qs = 301, js = 302, kl = 303, Hl = 304, Pa = 306, Vl = 1e3, os = 1001, Gl = 1002, Mi = 1003, Md = 1004, $o = 1005, Li = 1006, Qa = 1007, as = 1008, cr = 1009, af = 1010, lf = 1011, Ao = 1012, xc = 1013, cs = 1014, ar = 1015, wo = 1016, yc = 1017, Sc = 1018, $s = 1020, cf = 35902, uf = 1021, ff = 1022, Ii = 1023, hf = 1024, df = 1025, Hs = 1026, Ys = 1027, pf = 1028, Mc = 1029, mf = 1030, bc = 1031, Ec = 1033, va = 33776, xa = 33777, ya = 33778, Sa = 33779, Wl = 35840, Xl = 35841, ql = 35842, jl = 35843, $l = 36196, Yl = 37492, Kl = 37496, Zl = 37808, Jl = 37809, Ql = 37810, ec = 37811, tc = 37812, nc = 37813, ic = 37814, rc = 37815, sc = 37816, oc = 37817, ac = 37818, lc = 37819, cc = 37820, uc = 37821, Ma = 36492, fc = 36494, hc = 36495, gf = 36283, dc = 36284, pc = 36285, mc = 36286, bd = 3200, Ed = 3201, Td = 0, Ad = 1, Pr = "", Hi = "srgb", Nr = "srgb-linear", Tc = "display-p3", La = "display-p3-linear", Ta = "linear", fn = "srgb", Aa = "rec709", wa = "p3", Ts = 7680, au = 519, wd = 512, Cd = 513, Rd = 514, _f = 515, Pd = 516, Ld = 517, Dd = 518, Id = 519, lu = 35044, cu = "300 es", lr = 2e3, Ca = 2001;
 class Zs {
   addEventListener(e, t) {
@@ -16180,13 +16160,7 @@ function hv(i) {
 }
 function dv(i) {
   let e = "ENVMAP_MODE_REFLECTION";
-  if (i.envMap)
-    switch (i.envMapMode) {
-      case js:
-        e = "ENVMAP_MODE_REFRACTION";
-        break;
-    }
-  return e;
+  return i.envMap && i.envMapMode === js && (e = "ENVMAP_MODE_REFRACTION"), e;
 }
 function pv(i) {
   let e = "ENVMAP_BLENDING_NONE";

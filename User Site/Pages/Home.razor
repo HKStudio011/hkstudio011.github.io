@@ -393,8 +393,36 @@
                 </div>
             </div>
         </div>
+        <a href="https://ko-fi.com/kishimahayato" target="_blank" rel="noopener noreferrer"
+           class="donate-btn tw:inline-flex tw:items-center tw:gap-3 tw:px-8 tw:py-5 tw:rounded-full tw:text-xl tw:font-bold tw:transition tw:duration-300 tw:cursor-pointer tw:bottom-12 tw:fixed tw:right-15 tw:z-50"
+           style="background: linear-gradient(135deg, #29b9f3 0%, #7C3AED 100%); box-shadow: 0 0 20px rgba(41, 185, 243, 0.4);">
+            <span class="tw:animate-pulse tw:duration-[800ms]">☕</span>
+            <span class="tw:text-white tw:drop-shadow-md">Donate</span>
+        </a>
     </div>
+
 </div>
+
+
+
+<style>
+@@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.15); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.15); }
+    70% { transform: scale(1); }
+}
+.donate-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 0 40px rgba(41, 185, 243, 0.8), 0 0 80px rgba(124, 58, 237, 0.6);
+    filter: brightness(1.2);
+    animation: heartbeat 0.6s ease-in-out infinite !important;
+}
+.donate-btn {
+    animation: heartbeat 2s ease-in-out infinite;
+}
+</style>
 
 <script type="module">
     // case 1
