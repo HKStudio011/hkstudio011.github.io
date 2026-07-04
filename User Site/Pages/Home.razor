@@ -505,35 +505,10 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await LoadReposAsync();
-        LoadPage();
+        await LoadPageAsync();
     }
 
-    private async Task LoadReposAsync()
-    {
-        try
-        {
-            var json = await JS.InvokeAsync<string>("fetchGitHubRepos");
-            var raw = System.Text.Json.JsonSerializer.Deserialize<List<RepoRaw>>(json);
-            var repos = raw?.Select(r => new RepoInfo
-            {
-                Name = r.Name ?? "",
-                Description = r.Description,
-                HtmlUrl = r.HtmlUrl ?? "",
-                Language = r.Language,
-                StargazersCount = r.StargazersCount,
-                UpdatedAt = r.UpdatedAt,
-            }).ToList() ?? new List<RepoInfo>();
-            GitHubService.SetRepos(repos);
-            _gitHubError = false;
-        }
-        catch
-        {
-            _gitHubError = true;
-        }
-    }
-
-    private void SortBy(string sortBy)
+    private async Task SortBy(string sortBy)
     {
         if (_sortBy == sortBy)
             _direction = _direction == "desc" ? "asc" : "desc";
@@ -543,33 +518,32 @@
             _direction = "desc";
         }
         _currentPage = 1;
-        LoadPage();
+        await LoadPageAsync();
     }
 
-    private void GoToPage(int page)
+    private async Task GoToPage(int page)
     {
         _currentPage = page;
-        LoadPage();
+        await LoadPageAsync();
     }
 
-    private void LoadPage()
+    private async Task LoadPageAsync()
     {
-        var result = GitHubService.GetPage(_sortBy, _direction, _currentPage, 6);
-        _repos = result.Repos;
-        _totalPages = result.TotalPages;
-        _loading = false;
-    }
-
-    private sealed class RepoRaw
-    {
-        public string? Name { get; set; }
-        public string? Description { get; set; }
-        [System.Text.Json.Serialization.JsonPropertyName("html_url")]
-        public string? HtmlUrl { get; set; }
-        public string? Language { get; set; }
-        [System.Text.Json.Serialization.JsonPropertyName("stargazers_count")]
-        public int StargazersCount { get; set; }
-        [System.Text.Json.Serialization.JsonPropertyName("updated_at")]
-        public DateTime UpdatedAt { get; set; }
+        _loading = true;
+        try
+        {
+            var result = await GitHubService.GetPageAsync(_sortBy, _direction, _currentPage, 6);
+            _repos = result.Repos;
+            _totalPages = result.TotalPages;
+            _gitHubError = false;
+        }
+        catch
+        {
+            _gitHubError = true;
+        }
+        finally
+        {
+            _loading = false;
+        }
     }
 }

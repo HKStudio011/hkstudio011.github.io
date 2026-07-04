@@ -71,22 +71,5 @@ export function testViteLibrary() {
   console.log("Vite library successfully imported!");
 }
 
-export async function fetchGitHubRepos(): Promise<string> {
-  const res = await fetch(
-    "https://api.github.com/users/HKStudio011/repos?per_page=100&sort=updated",
-    { headers: { Accept: "application/vnd.github.v3+json" } }
-  );
-  if (!res.ok) throw new Error(`GitHub API: ${res.status}`);
-  return JSON.stringify(await res.json());
-}
-
-window.fetchGitHubRepos = fetchGitHubRepos;
-
-declare global {
-  interface Window {
-    fetchGitHubRepos: () => Promise<string>;
-  }
-}
-
 export { $ };
 
