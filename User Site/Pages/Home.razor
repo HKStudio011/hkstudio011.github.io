@@ -402,12 +402,12 @@
                                     <div class="d-flex justify-content-center align-items-center gap-3 mt-4">
                                         <button class="btn btn-sm btn-outline-light" disabled="@(_currentPage <= 1)"
                                                 @onclick="() => GoToPage(_currentPage - 1)">
-                                            ‹ Prev
+                                            ‹ Trước
                                         </button>
-                                        <span class="text-white">Page @_currentPage / @_totalPages</span>
+                                        <span class="text-white">Trang @_currentPage / @_totalPages</span>
                                         <button class="btn btn-sm btn-outline-light" disabled="@(_currentPage >= _totalPages)"
                                                 @onclick="() => GoToPage(_currentPage + 1)">
-                                            Next ›
+                                            Sau ›
                                         </button>
                                     </div>
                                 }
