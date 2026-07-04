@@ -1,4 +1,4 @@
-@inject User_Site.Router.Router router;
+﻿@inject User_Site.Router.Router router;
 @inject IJSRuntime JS
 @page "/"
 
@@ -402,16 +402,16 @@
                                     <div class="d-flex justify-content-center align-items-center gap-3 mt-4">
                                         <button class="btn btn-sm btn-outline-light" disabled="@(_currentPage <= 1)"
                                                 @onclick="() => GoToPage(_currentPage - 1)">
-                                            ‹ Trước
+                                            ‹ Prev
                                         </button>
-                                        <span class="text-white">Trang @_currentPage / @_totalPages</span>
+                                        <span class="text-white">Page @_currentPage / @_totalPages</span>
                                         <button class="btn btn-sm btn-outline-light" disabled="@(_currentPage >= _totalPages)"
                                                 @onclick="() => GoToPage(_currentPage + 1)">
-                                            Sau ›
+                                            Next ›
                                         </button>
                                     </div>
-                                }
-                            }
+    }
+ }
 
                         }
                     </div>
@@ -505,48 +505,71 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await LoadPageAsync();
+        await LoadReposAsync();
+        LoadPage();
     }
 
-    private async Task SortBy(string sortBy)
+    private async Task LoadReposAsync()
     {
-        if (_sortBy == sortBy)
-        {
-            _direction = _direction == "desc" ? "asc" : "desc";
-        }
-        else
-        {
-            _sortBy = sortBy;
-            _direction = "desc";
-        }
-        _currentPage = 1;
-        await LoadPageAsync();
-    }
-
-    private async Task GoToPage(int page)
-    {
-        _currentPage = page;
-        await LoadPageAsync();
-    }
-
-    private async Task LoadPageAsync()
-    {
-        _loading = true;
         try
         {
-            var result = await GitHubService.GetPageAsync(_sortBy, _direction, _currentPage, 6);
-            _repos = result.Repos;
-            _totalPages = result.TotalPages;
+            var json = await JS.InvokeAsync<string>("fetchGitHubRepos");
+            var raw = System.Text.Json.JsonSerializer.Deserialize<List<RepoRaw>>(json);
+            var repos = raw?.Select(r => new RepoInfo
+            {
+                Name = r.Name ?? "",
+                Description = r.Description,
+                HtmlUrl = r.HtmlUrl ?? "",
+                Language = r.Language,
+                StargazersCount = r.StargazersCount,
+                UpdatedAt = r.UpdatedAt,
+            }).ToList() ?? new List<RepoInfo>();
+            GitHubService.SetRepos(repos);
             _gitHubError = false;
         }
         catch
         {
             _gitHubError = true;
         }
-        finally
+    }
+
+    private void SortBy(string sortBy)
+    {
+        if (_sortBy == sortBy)
+            _direction = _direction == "desc" ? "asc" : "desc";
+        else
         {
-            _loading = false;
+            _sortBy = sortBy;
+            _direction = "desc";
         }
+        _currentPage = 1;
+        LoadPage();
+    }
+
+    private void GoToPage(int page)
+    {
+        _currentPage = page;
+        LoadPage();
+    }
+
+    private void LoadPage()
+    {
+        var result = GitHubService.GetPage(_sortBy, _direction, _currentPage, 6);
+        _repos = result.Repos;
+        _totalPages = result.TotalPages;
+        _loading = false;
+    }
+
+    private sealed class RepoRaw
+    {
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("html_url")]
+        public string? HtmlUrl { get; set; }
+        public string? Language { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("stargazers_count")]
+        public int StargazersCount { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("updated_at")]
+        public DateTime UpdatedAt { get; set; }
     }
 }
-
