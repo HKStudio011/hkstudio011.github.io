@@ -344,7 +344,21 @@
 
                         @if (_gitHubError)
                         {
-                            <div class="alert alert-warning text-center">Không thể tải danh sách repo. Vui lòng thử lại sau.</div>
+                            <div class="alert alert-warning text-center">
+                                <div class="fw-bold mb-1">Không thể tải danh sách repo</div>
+                                @if (_errorCode > 0)
+                                {
+                                    <div class="small">Máy chủ trả về lỗi (<span class="fw-bold">@_errorCode</span>). Thử lại sau.</div>
+                                }
+                                @if (_errorCode == 403)
+                                {
+                                    <div class="small text-muted">GitHub API giới hạn 60 request/giờ. Có thể bạn đang dùng VPN/chung IP.</div>
+                                }
+                                <a href="https://github.com/HKStudio011" target="_blank" rel="noopener noreferrer"
+                                   class="btn btn-sm btn-outline-dark mt-2">
+                                   🔗 Xem trực tiếp trên GitHub
+                                </a>
+                            </div>
                         }
                         else
                         {
@@ -497,6 +511,7 @@
     private int _totalPages = 1;
     private bool _loading = true;
     private bool _gitHubError;
+    private int _errorCode;
     private string _sortBy = "updated";
     private string _direction = "desc";
 
@@ -536,9 +551,16 @@
             _repos = result.Repos;
             _totalPages = result.TotalPages;
             _gitHubError = false;
+            _errorCode = 0;
+        }
+        catch (HttpRequestException ex) when (ex.StatusCode.HasValue)
+        {
+            _errorCode = (int)ex.StatusCode.Value;
+            _gitHubError = true;
         }
         catch
         {
+            _errorCode = 0;
             _gitHubError = true;
         }
         finally
